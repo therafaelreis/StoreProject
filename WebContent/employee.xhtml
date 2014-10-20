@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:ps="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"> 
+
+<h:head><title>New Employee</title></h:head> 
+<h:body> 
+	<h1>New Employee</h1>
+	<h:messages />
+	<h:form id="form">
+		<h:panelGrid columns="2">
+					
+			<h:outputLabel value="Username "/>
+			<h:inputText value="#{employeeController.employee.username}" ps:placeholder="Username or Email"/>
+			
+			<h:outputLabel value="Password"/>
+			<h:inputSecret value="#{employeeController.employee.password}" ps:placeholder="Password"/>
+			
+			<h:outputLabel value="Section" />
+			<h:selectOneMenu value="#{employeeController.employee.section}" converter="sectionConverter">
+				<f:selectItem itemLabel="Select a Section" noSelectionOption="true"/>
+				<f:selectItems value="#{employeeController.sectionDAO.listAll()}"/>
+			</h:selectOneMenu>
+			<h:panelGroup/>
+			<h:commandButton action="#{employeeController.gravar()}" value="Save" />
+		</h:panelGrid>
+	</h:form>
+	
+</h:body> 
+</html>

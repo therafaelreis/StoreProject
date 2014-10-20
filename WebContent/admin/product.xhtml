@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<ui:composition template="/AdminTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
+	
+	<ui:define name="corpo">
+		<h1>New Product</h1>
+		
+	<h:form id="form" enctype="multipart/form-data">
+		<h:messages/>
+		
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Description"/>
+			<h:inputText value="#{productController.product.description}" required="true" size="50" ps:placeholder="Description of the product"/>
+			
+			<h:outputLabel value="Fun Level"/>
+			<h:inputText value="#{productController.product.funLevel}" required="true" ps:type="range" ps:min="1" ps:max="10"/>
+			
+			<h:outputLabel value="Photo" />
+			<h:inputFile required="true" value="#{productController.photo}"/>
+			<h:panelGroup/>
+			<h:commandButton action="#{productController.add}" value="Add" />
+			
+		</h:panelGrid>
+		
+	</h:form>
+	</ui:define>
+</ui:composition>

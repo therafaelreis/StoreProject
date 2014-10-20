@@ -1,0 +1,29 @@
+ <!DOCTYPE html>
+<ui:composition template="/StoreTemplate.xhtml"
+	  xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:ps="http://xmlns.jcp.org/jsf/passthrough">
+	  
+	
+	
+<ui:define name="corpo">
+		<h:form id="form">
+			<h:inputText value="#{productListController.description}" size="60" ps:placeholder="what are you looking for?" />
+			<h:commandButton value="Search" action="#{productListController.search}"/>
+			
+			<div class="vitrine">
+				<ui:repeat var="obj" value="#{productListController.products}">
+					<div>
+						<img jsf:value="/photo?product=#{obj.id}" width="200" height="200" />
+						<span>#{obj.description}</span>
+					</div>
+				</ui:repeat>
+			</div>
+		</h:form>
+	
+</ui:define>
+
+</ui:composition>
